@@ -153,4 +153,6 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Developed with ❤️ by **Faith**.
+Developed with ❤️ by **Olupona Damilare (Wealth)**.
+
+Full-Stack Developer passionate about building modern web applications with scalable architectures and exceptional user experiences.

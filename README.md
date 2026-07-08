@@ -1,77 +1,66 @@
-# ReelVerse
+# 🎬 ReelVerse
 
-A modern movie streaming and entertainment platform built with **Next.js**, **TypeScript**, and **Tailwind CSS**. ReelVerse is designed with a production-first architecture, providing users with a seamless experience to discover, stream, rent, and purchase movies.
+ReelVerse is a modern movie streaming platform built with Next.js, React, TypeScript, Tailwind CSS, and Shadcn UI. It provides a beautiful and responsive user experience for discovering, renting, purchasing, and streaming movies.
 
----
-
-## Overview
-
-ReelVerse aims to provide a fast, responsive, and intuitive movie experience. The application follows modern frontend development practices with reusable components, scalable architecture, and clean code.
+This project is being built with a production-ready architecture, following best practices for scalability, maintainability, and clean code.
 
 ---
 
-## Current Features
-
-### Landing Page
-
-- Responsive Navigation
-- Hero Section
-- Trending Movies
-- Genre Exploration
-- Feature Highlights
-- Footer
-
-### Authentication
-
-- Login Page
-- Register Page
-
----
-
-## Upcoming Features
-
-- Forgot Password
-- Email Verification (OTP)
-- Reset Password
-- Movie Details
-- Search
-- Categories
-- Watchlist
-- Rentals
-- Purchases
-- User Dashboard
-- Admin Dashboard
-- Payment Integration
-- Recommendation System
-
----
-
-## Technology Stack
+## 🚀 Tech Stack
 
 ### Frontend
 
-- Next.js
+- Next.js 15+
+- React 19
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- Shadcn UI
 - Framer Motion
-- Axios
 - React Hook Form
 - Zod
-- Redux Toolkit
+- Axios
+- Sonner
 
 ### Backend
 
 - Node.js
 - Express.js
 - MySQL
+- Joi Validation
 - JWT Authentication
-- Bcrypt
-- Multer
+- bcryptjs
 
 ---
 
-## Project Structure
+## ✨ Features Completed
+
+### Landing Page
+
+- Modern Hero Section
+- Trending Movies Section
+- Featured Movies
+- Popular Genres
+- Movie Features
+- Responsive Navigation
+- Responsive Footer
+- Smooth Animations
+
+### Authentication
+
+- Beautiful Login UI
+- Beautiful Register UI
+- Password Visibility Toggle
+- Client-side Validation (Zod)
+- Backend Validation (Joi)
+- User Registration
+- Password Hashing with bcrypt
+- JWT Authentication
+- Axios API Integration
+- Toast Notifications
+
+---
+
+## 🛠 Project Structure
 
 ```text
 src
@@ -79,106 +68,89 @@ src
 ├── app
 ├── components
 │   ├── auth
-│   ├── hero
+│   ├── home
 │   ├── layout
-│   ├── movie
-│   ├── genres
-│   ├── shared
 │   └── ui
 │
-├── hooks
-├── lib
+├── schemas
 ├── services
-├── store
-├── styles
+├── hooks
+├── utils
 ├── types
-└── utils
+└── styles
 ```
 
 ---
 
-## Getting Started
+## 📦 Installation
 
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/reelverse.git
-```
-
-Navigate into the project:
+Clone the repository
 
 ```bash
-cd reelverse
+git clone https://github.com/YOUR_USERNAME/reelVerse.git
 ```
 
-Install dependencies:
+Move into the project
+
+```bash
+cd reelVerse
+```
+
+Install dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server:
+Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open your browser:
+---
 
-```text
-http://localhost:3000
+## ⚙ Environment Variables
+
+Create a `.env.local` file in the project root.
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ---
 
-## Development Status
+## 🎯 Upcoming Features
 
-Current Version
-
-```text
-v0.1.0-alpha
-```
-
----
-
-## Roadmap
-
-### Phase 1
-
-- [x] Project Setup
-- [x] Landing Page
-- [x] Authentication UI
-
-### Phase 2
-
-- [ ] Authentication Logic
-- [ ] Movie Catalogue
-- [ ] Search
-- [ ] Movie Details
-
-### Phase 3
-
-- [ ] Watchlist
-- [ ] Rentals
-- [ ] Purchases
-- [ ] User Dashboard
-
-### Phase 4
-
-- [ ] Admin Dashboard
-- [ ] Payment Integration
-- [ ] Deployment
+- User Login
+- JWT Token Storage
+- Protected Routes
+- User Dashboard
+- Movie Details
+- Search Movies
+- Categories
+- Watchlist
+- Wallet System
+- Movie Rentals
+- Movie Purchases
+- Payment Integration
+- Producer Dashboard
+- Admin Dashboard
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-This project is currently under active development.
+Contributions, issues, and feature requests are welcome.
 
 ---
 
-## Author
+## 📄 License
 
-**Wealth**
+This project is licensed under the MIT License.
 
-Building **ReelVerse** one feature at a time.
+---
+
+## 👨‍💻 Author
+
+Developed with ❤️ by **Faith**.

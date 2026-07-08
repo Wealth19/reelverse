@@ -1,20 +1,21 @@
-export interface LoginPayload {
+export interface User {
+  id: number;
+  name: string;
   email: string;
-  password: string;
+  role: string;
 }
 
 export interface AuthResponse {
-  token: string;
-  user: {
-    id: number;
-    username: string;
-    email: string;
-  };
-}
+  status: string;
+  message: string;
 
-export interface RegisterPayload {
-  fullName: string;
-  username: string;
-  email: string;
-  password: string;
+  data: {
+    user: User;
+
+    accessToken: string;
+
+    refreshToken: string;
+
+    expiresIn: string;
+  };
 }

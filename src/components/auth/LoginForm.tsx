@@ -15,7 +15,7 @@ import SocialLogin from "./SocialLogin";
 
 export default function LoginForm() {
   return (
-    <Card className="w-full max-w-md border-slate-800 bg-slate-900/70 backdrop-blur-xl">
+    <Card className="w-full max-w-lg border-slate-800 bg-slate-900/70 backdrop-blur-xl">
       <CardContent className="p-8">
         <AuthHeader
           title="Welcome Back"

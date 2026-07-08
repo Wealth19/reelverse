@@ -16,7 +16,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           alt="Movie Background"
           fill
           priority
-          className="object-cover"
+          className="object-cover scale-125 transition-transform duration-700"
         />
 
         {/* Overlay */}

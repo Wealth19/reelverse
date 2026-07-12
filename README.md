@@ -1,14 +1,14 @@
 # 🎬 ReelVerse
 
-ReelVerse is a modern movie streaming platform built with Next.js, React, TypeScript, Tailwind CSS, and Shadcn UI. It provides a beautiful and responsive user experience for discovering, renting, purchasing, and streaming movies.
+ReelVerse is a modern full-stack movie streaming platform built with **Next.js**, **React**, **TypeScript**, **Tailwind CSS**, **Shadcn UI**, **Node.js**, **Express.js**, and **MySQL**.
 
-This project is being built with a production-ready architecture, following best practices for scalability, maintainability, and clean code.
+It provides users with a beautiful and responsive experience for discovering, renting, purchasing, and streaming movies while following a production-ready architecture focused on scalability, security, and maintainability.
 
 ---
 
-## 🚀 Tech Stack
+# 🚀 Tech Stack
 
-### Frontend
+## Frontend
 
 - Next.js 15+
 - React 19
@@ -20,80 +20,105 @@ This project is being built with a production-ready architecture, following best
 - Zod
 - Axios
 - Sonner
+- Lucide React
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 - MySQL
-- Joi Validation
 - JWT Authentication
+- Joi Validation
 - bcryptjs
 
 ---
 
-## ✨ Features Completed
+# ✨ Features Completed
 
-### Landing Page
-
-- Modern Hero Section
-- Trending Movies Section
-- Featured Movies
-- Popular Genres
-- Movie Features
-- Responsive Navigation
-- Responsive Footer
-- Smooth Animations
-
-### Authentication
+## Authentication
 
 - Beautiful Login UI
 - Beautiful Register UI
 - Password Visibility Toggle
-- Client-side Validation (Zod)
-- Backend Validation (Joi)
-- User Registration
-- Password Hashing with bcrypt
-- JWT Authentication
+- React Hook Form Integration
+- Zod Client-side Validation
 - Axios API Integration
+- JWT Authentication
+- Access Token Storage
+- Refresh Token Storage
+- Global Authentication Context
 - Toast Notifications
+- Protected Authentication Flow
 
 ---
 
-## 🛠 Project Structure
+## Landing Page
+
+- Modern Hero Section
+- Trending Movies
+- Featured Movies
+- Popular Genres
+- Movie Features Section
+- Responsive Navigation
+- Responsive Footer
+- Smooth Animations
+- Mobile Responsive Design
+
+---
+
+## Architecture
+
+- Modular Component Structure
+- Reusable UI Components
+- Service Layer Architecture
+- Authentication Context API
+- Schema-based Validation
+- Production-ready Folder Structure
+
+---
+
+# 📂 Project Structure
 
 ```text
 src
 │
 ├── app
+│
 ├── components
 │   ├── auth
 │   ├── home
 │   ├── layout
 │   └── ui
 │
-├── schemas
-├── services
+├── context
+│
 ├── hooks
-├── utils
+│
+├── schemas
+│
+├── services
+│
 ├── types
+│
+├── utils
+│
 └── styles
 ```
 
 ---
 
-## 📦 Installation
+# 📦 Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/reelVerse.git
+git clone https://github.com/YOUR_USERNAME/reelverse.git
 ```
 
 Move into the project
 
 ```bash
-cd reelVerse
+cd Frontend
 ```
 
 Install dependencies
@@ -110,9 +135,9 @@ npm run dev
 
 ---
 
-## ⚙ Environment Variables
+# ⚙️ Environment Variables
 
-Create a `.env.local` file in the project root.
+Create a `.env.local` file.
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
@@ -120,39 +145,42 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
 ---
 
-## 🎯 Upcoming Features
+# 🎯 Upcoming Features
 
-- User Login
-- JWT Token Storage
+- Logout
 - Protected Routes
-- User Dashboard
-- Movie Details
+- Axios Interceptors
+- Automatic Refresh Token
+- Dynamic Navbar
+- Movie Details Page
 - Search Movies
 - Categories
 - Watchlist
-- Wallet System
+- Wallet Dashboard
 - Movie Rentals
 - Movie Purchases
-- Payment Integration
 - Producer Dashboard
 - Admin Dashboard
+- User Profile
+- Settings Page
+- Dark Mode
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome.
 
 ---
 
-## 📄 License
+# 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 Developed with ❤️ by **Olupona Damilare (Wealth)**.
 
-Full-Stack Developer passionate about building modern web applications with scalable architectures and exceptional user experiences.
+Full-Stack Developer passionate about building scalable web applications, secure backend systems, and modern user experiences.

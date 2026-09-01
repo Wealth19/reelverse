@@ -44,11 +44,7 @@ export default function LoginForm() {
 
       const response = await login(data);
 
-      loginUser(
-        response.data.user,
-        response.data.access.token,
-        response.data.refresh.token,
-      );
+      loginUser(response.data.user, response.data.access.token);
 
       toast.success(response.message);
 
@@ -99,7 +95,7 @@ export default function LoginForm() {
 
             <Link
               href="/forgot-password"
-              className="text-red-500 hover:text-red-400"
+              className="text-red-500 hover:text-red-300"
             >
               Forgot Password?
             </Link>
@@ -108,7 +104,7 @@ export default function LoginForm() {
           <Button
             type="submit"
             disabled={loading}
-            className="h-12 w-full bg-red-600 hover:bg-red-700"
+            className="h-12 w-full bg-red-600 hover:bg-red-700 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Login"}
           </Button>

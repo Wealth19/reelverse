@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 
 interface FadeInProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export default function FadeIn({ children }: FadeInProps) {
+export default function FadeIn({ children, className }: FadeInProps) {
   return (
     <motion.div
       initial={{
@@ -23,6 +24,7 @@ export default function FadeIn({ children }: FadeInProps) {
       transition={{
         duration: 0.6,
       }}
+      className={className}
     >
       {children}
     </motion.div>

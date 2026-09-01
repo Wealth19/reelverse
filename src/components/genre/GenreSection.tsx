@@ -32,21 +32,16 @@ import genres from "./genres";
 
 export default function GenreSection() {
   return (
-    <section className="bg-slate-950 py-24">
+    <section className="bg-slate-950 py-8">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="text-sm font-semibold uppercase tracking-[0.3em] text-red-500">
-          Genres
-        </span>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="border-l-2 border-red-500 pl-3 text-xl font-bold text-white">
+            Popular Genres
+          </h2>
+          <span className="text-xs text-slate-300">View All &gt;</span>
+        </div>
 
-        <h2 className="mt-3 text-4xl font-bold text-white">Explore by Genre</h2>
-
-        <p className="mt-4 max-w-2xl text-slate-400">
-          Browse our growing collection of movies across every genre. From
-          action-packed adventures to heartwarming romances, there is something
-          for everyone.
-        </p>
-
-        <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+        <div className="flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {genres.map((genre) => (
             <GenreCard
               key={genre.id}
@@ -59,4 +54,3 @@ export default function GenreSection() {
     </section>
   );
 }
-

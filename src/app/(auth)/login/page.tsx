@@ -5,6 +5,7 @@ export default function LoginPage() {
   return (
     <AuthLayout>
       <LoginForm />
+      {/* <h1>DOCKER TEST888</h1> */}
     </AuthLayout>
   );
 }

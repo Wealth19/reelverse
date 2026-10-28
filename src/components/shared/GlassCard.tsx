@@ -13,7 +13,7 @@ export default function GlassCard({ children }: GlassCardProps) {
       backdrop-blur-xl
       transition
       duration-300
-      hover:border-red-500/50
+      hover:border-amber-500/50
       hover:bg-white/10
     "
     >

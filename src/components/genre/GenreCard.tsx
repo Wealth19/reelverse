@@ -28,7 +28,7 @@
 //         p-8
 //         text-center
 //         transition
-//         hover:border-red-600
+//         hover:border-amber-500
 //         hover:bg-slate-800
 //       "
 //     >
@@ -42,14 +42,14 @@
 //           items-center
 //           justify-center
 //           rounded-full
-//           bg-red-600/10
+//           bg-amber-500/10
 //           transition
-//           group-hover:bg-red-600
+//           group-hover:bg-amber-500
 //         "
 //       >
 //         <Icon
 //           size={30}
-//           className="text-red-500 transition group-hover:text-white"
+//           className="text-amber-400 transition group-hover:text-white"
 //         />
 //       </div>
 
@@ -98,10 +98,10 @@ export default function GenreCard({ name, iconName }: GenreCardProps) {
       transition={{ duration: 0.25 }}
       className="group w-36 shrink-0 cursor-pointer rounded-lg bg-slate-900 p-3 text-center transition hover:bg-slate-800"
     >
-      <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-red-600/10 transition group-hover:bg-red-600">
+      <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/10 transition group-hover:bg-amber-500">
         <IconComponent
           size={30}
-          className="text-red-500 transition group-hover:text-white"
+          className="text-amber-400 transition group-hover:text-white"
         />
       </div>
 

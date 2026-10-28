@@ -14,7 +14,7 @@ interface User {
   id: number;
   name: string;
   email: string;
-  role: "customer" | "producer";
+  role: "customer" | "producer" | "admin";
 }
 
 interface AuthContextType {

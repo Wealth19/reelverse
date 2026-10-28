@@ -11,7 +11,7 @@ export default function FeaturedBanner() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="relative overflow-hidden rounded-lg bg-indigo-950/40">
           <Image
-            src={featuredMovie.image}
+            src={featuredMovie.image || "/images/featured/avatar.jpg"}
             alt={featuredMovie.title}
             width={1600}
             height={900}

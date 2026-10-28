@@ -1,0 +1,76 @@
+name: movieapp-test
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: test_root_password
+      MYSQL_DATABASE: movie_db_test
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_password
+    volumes:
+      - test_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-utest_user", "-ptest_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: movieapp_test_redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  db_migrate:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.test
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: test_user
+      DB_PASSWORD: test_password
+      DB_NAME: movie_db_test
+    command: ["npm", "run", "migration:run"]
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.test
+    depends_on:
+      db_migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: test_user
+      DB_PASSWORD: test_password
+      DB_NAME: movie_db_test
+      REDIS_URL: redis://redis:6379
+      PORT: 5000
+    command: ["node", "--check", "src/server.js"]
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.test
+    depends_on:
+      backend:
+        condition: service_completed_successfully
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:5000/api
+    command: ["npm", "run", "lint"]
+
+volumes:
+  test_db_data:

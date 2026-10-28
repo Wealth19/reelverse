@@ -8,7 +8,8 @@ const movies: Movie[] = [
     rating: 8.6,
     genre: "Action",
     duration: "2h 49m",
-    image: "/images/movies/johnwick.jpg",
+    rental_price: 500,
+    purchase_price: 2500,
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ const movies: Movie[] = [
     rating: 9.1,
     genre: "Drama",
     duration: "3h",
-    image: "/images/movies/oppenheimer.jpg",
+    rental_price: 700,
+    purchase_price: 3000,
   },
   {
     id: 3,
@@ -26,7 +28,8 @@ const movies: Movie[] = [
     rating: 8.9,
     genre: "Sci-Fi",
     duration: "2h 46m",
-    image: "/images/movies/dune2.jpg",
+    rental_price: 650,
+    purchase_price: 2800,
   },
   {
     id: 4,
@@ -35,7 +38,8 @@ const movies: Movie[] = [
     rating: 8.2,
     genre: "Action",
     duration: "2h 56m",
-    image: "/images/movies/batman.jpg",
+    rental_price: 450,
+    purchase_price: 2200,
   },
 ];
 

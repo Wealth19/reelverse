@@ -1,10 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { Heart, Play, Star } from "lucide-react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import type { Movie } from "@/types/movie";
-import { Button } from "@/components/ui/button";
+import PosterArt from "./PosterArt";
+import WatchlistButton from "./WatchlistButton";
+import { formatMoney } from "@/lib/format";
 
 interface MovieCardProps {
   movie: Movie;
@@ -12,54 +14,45 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie }: MovieCardProps) {
   return (
-    <motion.div
-      whileHover={{ y: -10 }}
-      transition={{ duration: 0.25 }}
-      className="group w-37 shrink-0 overflow-hidden rounded-lg border border-slate-800 bg-slate-900 sm:w-42.5"
-    >
-      <div className="relative aspect-3/4 overflow-hidden">
-        <Image
-          src={movie.image}
-          alt={movie.title}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-110"
-        />
+    <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.2 }}>
+      <div className="group relative block w-full overflow-hidden rounded-xl border border-[#2a241c] bg-[#141118]">
+        <div className="relative aspect-3/4 overflow-hidden">
+          <Link href={`/movies/${movie.id}`}>
+            <PosterArt title={movie.title} image={movie.image} />
+          </Link>
 
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
+          <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#d4a24c] backdrop-blur">
+            {movie.genre || "Feature"}
+          </span>
 
-        {/* Favorite */}
-        <Button className="absolute right-3 cursor-pointer top-3 rounded-full bg-black/50 p-2 backdrop-blur-md transition hover:bg-red-500">
-          <Heart size={18} />
-        </Button>
+          <div className="absolute right-3 top-3 z-10">
+            <WatchlistButton movieId={movie.id} />
+          </div>
 
-        {/* Play Button */}
-        <Button
-          size="icon"
-          className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600 opacity-0 transition group-hover:opacity-100 hover:bg-red-700 cursor-pointer"
-        >
-          <Play className="fill-white" size={22} />
-        </Button>
-
-        {/* Genre */}
-        <span className="absolute bottom-3 left-3 rounded-sm bg-red-500 px-3 py-1 text-xs font-semibold">
-          {movie.genre}
-        </span>
-      </div>
-
-      <div className="space-y-1 p-2">
-        <h3 className="truncate text-xs font-semibold">{movie.title}</h3>
-
-        <div className="flex items-center justify-between text-[10px] text-slate-400">
-          <span>{movie.year}</span>
-
-          <span>{movie.duration}</span>
+          {Number(movie.avg_rating || 0) > 0 && (
+            <span className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-1 rounded-md bg-black/75 px-2 py-0.5 text-[11px] font-bold text-amber-400 backdrop-blur">
+              <Star className="h-3 w-3 fill-current text-amber-400" />
+              {Number(movie.avg_rating).toFixed(1)}
+            </span>
+          )}
         </div>
 
-        <div className="flex items-center gap-1">
-          <Star className="fill-yellow-400 text-yellow-400" size={12} />
-          <span className="text-[10px] font-semibold">{movie.rating}</span>
-        </div>
+        <Link href={`/movies/${movie.id}`} className="block space-y-1 p-3">
+          <h3 className="line-clamp-1 text-sm font-semibold text-white group-hover:text-[#d4a24c] transition">
+            {movie.title}
+          </h3>
+          <p className="text-[11px] text-[#b8ab98]">
+            {[movie.year, movie.duration].filter(Boolean).join(" · ")}
+          </p>
+          <div className="flex items-center justify-between pt-0.5 text-[11px]">
+            <span className="text-[#b8ab98]">
+              Rent {formatMoney(movie.rental_price)}
+            </span>
+            <span className="font-semibold text-[#d4a24c]">
+              Own {formatMoney(movie.purchase_price)}
+            </span>
+          </div>
+        </Link>
       </div>
     </motion.div>
   );

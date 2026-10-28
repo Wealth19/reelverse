@@ -3,6 +3,8 @@ import type { Movie } from "@/types/movie";
 const featuredMovie: Movie = {
   id: 100,
   title: "Avatar: Fire and Ash",
+  rental_price: 2500,
+  purchase_price: 7500,
   year: 2025,
   rating: 9.4,
   genre: "Adventure",

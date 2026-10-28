@@ -21,6 +21,7 @@ export const registerSchema = z
       ),
 
     confirmPassword: z.string(),
+    role: z.enum(["customer", "producer"]),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",

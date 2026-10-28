@@ -1,92 +1,35 @@
-// //
-// import axios from "axios";
-
-// const api = axios.create({
-//   baseURL: process.env.NEXT_PUBLIC_API_URL,
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   withCredentials: true,
-// });
-
-// // Attach access token to every request
-// api.interceptors.request.use(
-//   (config) => {
-//     if (typeof window !== "undefined") {
-//       const accessToken = localStorage.getItem("accessToken");
-
-//       if (accessToken) {
-//         config.headers.Authorization = `Bearer ${accessToken}`;
-//       }
-//     }
-
-//     return config;
-//   },
-//   (error) => Promise.reject(error),
-// );
-
-// // Automatically refresh expired access token
-// api.interceptors.response.use(
-//   (response) => response,
-
-//   async (error) => {
-//     const originalRequest = error.config;
-
-//     if (
-//       error.response?.status === 401 &&
-//       !originalRequest?._retry &&
-//       typeof window !== "undefined"
-//     ) {
-//       originalRequest._retry = true;
-
-//       try {
-//         /*
-//          * We DO NOT read the refresh token.
-//          *
-//          * The browser automatically sends the
-//          * HttpOnly refreshToken cookie because
-//          * withCredentials is enabled.
-//          */
-
-//         const { data } = await axios.post(
-//           `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`,
-//           {},
-//           {
-//             withCredentials: true,
-//           },
-//         );
-
-//         const newAccessToken = data.data.access.token;
-
-//         localStorage.setItem("accessToken", newAccessToken);
-
-//         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
-//         return api(originalRequest);
-//       } catch (refreshError) {
-//         localStorage.removeItem("accessToken");
-//         localStorage.removeItem("user");
-
-//         window.location.href = "/login";
-
-//         return Promise.reject(refreshError);
-//       }
-//     }
-
-//     return Promise.reject(error);
-//   },
-// );
-
-// export default api;
-
 import axios, {
   AxiosError,
   AxiosRequestConfig,
   InternalAxiosRequestConfig,
 } from "axios";
 
+const resolveApiBaseUrl = (): string => {
+  const configured =
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
+  if (typeof window === "undefined") {
+    return configured;
+  }
+
+  try {
+    const url = new URL(configured);
+    const currentHost = window.location.hostname;
+    const isLocalHost = (h: string) => h === "localhost" || h === "127.0.0.1";
+
+    if (isLocalHost(url.hostname) && isLocalHost(currentHost)) {
+      url.hostname = currentHost;
+      return url.toString().replace(/\/+$/, "");
+    }
+  } catch {
+    // Fallback to configured string
+  }
+
+  return configured;
+};
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: resolveApiBaseUrl(),
   headers: {
     "Content-Type": "application/json",
   },
@@ -209,7 +152,7 @@ const refreshAccessToken = async (): Promise<string> => {
 
   refreshPromise = axios
     .post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`,
+      `${resolveApiBaseUrl()}/auth/refresh`,
       {},
       {
         withCredentials: true,
@@ -258,6 +201,8 @@ api.interceptors.request.use(
       return config;
     }
 
+    config.baseURL = resolveApiBaseUrl();
+
     /*
      * Never intercept the refresh endpoint itself.
      */
@@ -276,16 +221,17 @@ api.interceptors.request.use(
       const refreshBuffer = 5 * 60 * 1000;
 
       if (expiration !== null && expiration - Date.now() <= refreshBuffer) {
+        const isAlreadyExpired = expiration <= Date.now();
         try {
           accessToken = await refreshAccessToken();
-        } catch {
-          /*
-           * Do not redirect here.
-           *
-           * The request can continue with the current token.
-           * If the backend rejects it with 401, the response
-           * interceptor will handle the reactive refresh.
-           */
+        } catch (refreshErr) {
+          if (isAlreadyExpired) {
+            clearAuthentication();
+            if (!window.location.pathname.startsWith("/login")) {
+              window.location.href = "/login";
+            }
+            return Promise.reject(refreshErr);
+          }
         }
       }
 
@@ -384,7 +330,9 @@ api.interceptors.response.use(
        */
       clearAuthentication();
 
-      window.location.href = "/login";
+      if (!window.location.pathname.startsWith("/login")) {
+        window.location.href = "/login";
+      }
 
       return Promise.reject(refreshError);
     }

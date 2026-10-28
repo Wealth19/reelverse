@@ -22,7 +22,7 @@ export default function ContinueCard({
   progress,
 }: ContinueCardProps) {
   return (
-    <Card className="overflow-hidden border-slate-800 bg-slate-900 transition-all duration-300 hover:-translate-y-2 hover:border-red-600 hover:shadow-xl hover:shadow-red-600/10">
+    <Card className="overflow-hidden border-slate-800 bg-slate-900 transition-all duration-300 hover:-translate-y-2 hover:border-amber-500 hover:shadow-xl hover:shadow-amber-500/10">
       <div className="relative h-56">
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
@@ -38,7 +38,7 @@ export default function ContinueCard({
 
         <p className="text-sm text-slate-400">{progress}% watched</p>
 
-        <Button className="w-full bg-red-600 hover:bg-red-700 cursor-pointer">
+        <Button className="w-full bg-amber-600 hover:bg-amber-700 cursor-pointer">
           <Play className="mr-2 h-4 w-4 fill-white" />
           Resume Watching
         </Button>

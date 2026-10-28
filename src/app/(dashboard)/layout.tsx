@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/layout/Footer";
 import { useAuth } from "@/context/AuthContext";
 
 interface DashboardLayoutProps {
@@ -12,7 +12,6 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const { isAuthenticated, loading } = useAuth();
-
   const router = useRouter();
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center text-lg">
+      <div className="flex min-h-screen items-center justify-center text-[#cbbba4]">
         Loading...
       </div>
     );
@@ -34,10 +33,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   return (
-    <>
+    <div className="cinema-grain flex min-h-screen flex-col bg-[#08070b] text-[#f6f0e6]">
       <Navbar />
-
-      <main className="pt-24">{children}</main>
-    </>
+      <main className="flex-1 pt-24">{children}</main>
+      <Footer />
+    </div>
   );
 }

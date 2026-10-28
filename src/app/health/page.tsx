@@ -51,7 +51,7 @@ export default function HealthPage() {
     <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
       <div className="mx-auto max-w-3xl">
         <div className="mb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400">
             System status
           </p>
           <h1 className="mt-2 text-4xl font-bold">Service health</h1>
@@ -69,7 +69,7 @@ export default function HealthPage() {
               <div className="flex items-center justify-between">
                 <h2 className="font-semibold">{name}</h2>
                 <span
-                  className={`h-3 w-3 rounded-full ${statuses[index] === "ok" ? "bg-emerald-400" : "bg-red-500"}`}
+                  className={`h-3 w-3 rounded-full ${statuses[index] === "ok" ? "bg-emerald-400" : "bg-amber-400"}`}
                 />
               </div>
               <p className="mt-3 text-sm capitalize text-slate-400">
@@ -82,7 +82,7 @@ export default function HealthPage() {
         <button
           type="button"
           onClick={checkHealth}
-          className="mt-6 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold transition hover:bg-red-700"
+          className="mt-6 rounded-md bg-amber-600 px-4 py-2 text-sm font-semibold transition hover:bg-amber-700"
         >
           Check again
         </button>

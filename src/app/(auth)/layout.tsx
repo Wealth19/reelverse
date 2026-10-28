@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ReelVerse — Sign In",
+  description: "Sign in or create an account on ReelVerse.",
+};
+
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="min-h-screen bg-slate-950">{children}</main>;
+  return <>{children}</>;
 }

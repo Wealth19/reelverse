@@ -6,7 +6,7 @@ export default function ContinueWatching() {
     <section className="bg-slate-950 py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12">
-          <p className="font-semibold uppercase tracking-[0.3em] text-red-500">
+          <p className="font-semibold uppercase tracking-[0.3em] text-amber-400">
             Welcome Back
           </p>
 

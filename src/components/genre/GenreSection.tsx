@@ -5,7 +5,7 @@
 //   return (
 //     <section className="bg-slate-950 py-24">
 //       <div className="mx-auto max-w-7xl px-6">
-//         <span className="text-sm font-semibold uppercase tracking-[0.3em] text-red-500">
+//         <span className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-400">
 //           Genres
 //         </span>
 
@@ -35,13 +35,13 @@ export default function GenreSection() {
     <section className="bg-slate-950 py-8">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="border-l-2 border-red-500 pl-3 text-xl font-bold text-white">
+          <h2 className="border-l-2 border-amber-500 pl-3 text-xl font-bold text-white">
             Popular Genres
           </h2>
           <span className="text-xs text-slate-300">View All &gt;</span>
         </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="scrollbar-none flex gap-3 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden">
           {genres.map((genre) => (
             <GenreCard
               key={genre.id}

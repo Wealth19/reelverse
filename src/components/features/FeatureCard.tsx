@@ -29,7 +29,7 @@ export default function FeatureCard({
         y: -8,
         scale: 1.03,
       }}
-      className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition"
+      className="rounded-3xl border border-[#2a241c] bg-[#141118] p-8 transition"
     >
       <div className="mb-6 inline-flex rounded-2xl p-4">
         <Icon size={28} />
@@ -37,7 +37,7 @@ export default function FeatureCard({
 
       <h3 className="mb-3 text-2xl font-bold">{title}</h3>
 
-      <p className="text-slate-400">{description}</p>
+      <p className="text-[#cbbba4]">{description}</p>
     </motion.div>
   );
 }

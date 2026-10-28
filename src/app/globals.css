@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-amber-300: #d4a24c;
+  --color-amber-400: #d4a24c;
+  --color-amber-500: #d4a24c;
+  --color-amber-600: #d4a24c;
+  --color-amber-700: #d4a24c;
+}
+
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
-
-  --card: #111827;
-  --card-foreground: #f8fafc;
-
-  --primary: #e50914;
-  --secondary: #dc2626;
-
-  --muted: #334155;
-
-  --border: #1e293b;
+  --background: #08070b;
+  --foreground: #f6f0e6;
+  --card: #141118;
+  --card-foreground: #f6f0e6;
+  --primary: #d4a24c;
+  --secondary: #d4a24c;
+  --muted: #3a342c;
+  --border: #2a241c;
 }
 
 body {
@@ -31,4 +35,16 @@ h5 {
 
 html {
   scroll-behavior: smooth;
+}
+
+.cinema-grain {
+  background-image:
+    radial-gradient(ellipse at top, rgba(212, 162, 76, 0.12), transparent 45%),
+    radial-gradient(ellipse at bottom right, rgba(212, 162, 76, 0.08), transparent 40%);
+}
+
+.ticket-edge {
+  background-image: radial-gradient(circle at 0 12px, transparent 8px, #141118 9px);
+  background-size: 16px 24px;
+  background-repeat: repeat-y;
 }

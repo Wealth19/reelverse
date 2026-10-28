@@ -1,22 +1,30 @@
-const features = [
+const features: Array<{
+  title: string;
+  description: string;
+  icon: "film" | "tv" | "sparkles" | "smartphone";
+}> = [
   {
-    title: "Massive Library",
-    description: "Explore thousands of blockbuster movies and TV shows.",
+    title: "Timed rentals",
+    description:
+      "Borrow a title for 1, 3, or 7 days. Playback stops when the clock runs out.",
     icon: "film",
   },
   {
-    title: "Ultra HD Streaming",
-    description: "Watch your favorite movies in stunning 4K resolution.",
+    title: "Buy forever",
+    description:
+      "Purchase once from your wallet and keep the movie in your library.",
     icon: "tv",
   },
   {
-    title: "Smart Recommendations",
-    description: "Receive personalized movie suggestions.",
+    title: "Customer wallet",
+    description:
+      "Fund your balance, then rent or buy without leaving the app.",
     icon: "sparkles",
   },
   {
-    title: "Watch Anywhere",
-    description: "Desktop, Mobile, Tablet and TV.",
+    title: "Author studio",
+    description:
+      "Creators upload movies with rental and purchase prices in minutes.",
     icon: "smartphone",
   },
 ];

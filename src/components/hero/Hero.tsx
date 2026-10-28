@@ -1,150 +1,96 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Play, Star } from "lucide-react";
+import Link from "next/link";
+import { Play, Ticket } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
-const slides = [
-  {
-    title: "Joker: Folie a Deux",
-    image: "/images/hero/hero-bg.jpg",
-    rating: "8.5",
-    year: "2024",
-    duration: "2h 18m",
-    genre: "Drama, Thriller",
-    description:
-      "Struggling with his dual identity, Arthur Fleck not only stumbles upon true love, but also finds the music that has always been inside him.",
-  },
-  {
-    title: "Oppenheimer",
-    image: "/images/movies/oppenheimer.jpg",
-    rating: "9.1",
-    year: "2023",
-    duration: "3h",
-    genre: "Drama, History",
-    description:
-      "A brilliant mind faces the weight of history while building a discovery that changes the world forever.",
-  },
-  {
-    title: "Dune: Part Two",
-    image: "/images/movies/dune2.jpg",
-    rating: "8.9",
-    year: "2024",
-    duration: "2h 46m",
-    genre: "Sci-Fi, Adventure",
-    description:
-      "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
-  },
-];
+import { useAuth } from "@/context/AuthContext";
 
 export default function Hero() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const slide = slides[activeSlide];
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % slides.length);
-    }, 7000);
-
-    return () => window.clearInterval(timer);
-  }, []);
+  const { isAuthenticated, user } = useAuth();
+  const studio = user?.role === "producer";
 
   return (
-    <section className="relative flex min-h-130 items-center overflow-hidden pt-16 sm:min-h-140">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img
-          src={slide.image}
-          alt={slide.title}
-          className="h-full w-full object-cover transition-opacity duration-500"
-        />
-
-        <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/75 to-slate-950/10" />
-
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
-      {/* Content */}
-      <button
-        type="button"
-        aria-label="Previous featured movie"
-        onClick={() =>
-          setActiveSlide((activeSlide - 1 + slides.length) % slides.length)
-        }
-        className="absolute left-5 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-3 text-white backdrop-blur-sm transition hover:bg-red-600 md:block"
-      >
-        <ChevronLeft size={20} />
-      </button>
-
-      <button
-        type="button"
-        aria-label="Next featured movie"
-        onClick={() => setActiveSlide((activeSlide + 1) % slides.length)}
-        className="absolute right-5 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-3 text-white backdrop-blur-sm transition hover:bg-red-600 md:block"
-      >
-        <ChevronRight size={20} />
-      </button>
-
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl px-6 pb-10">
+    <section className="relative overflow-hidden px-6 pb-16 pt-20 sm:pt-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,162,76,0.18),transparent_42%),radial-gradient(circle_at_80%_20%,rgba(196,92,38,0.16),transparent_35%)]" />
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-red-500">
-            Trending now
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-[#d4a24c]">
+            Independent cinema, on demand
           </p>
-
-          <h1 className="mb-4 max-w-3xl text-3xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            {slide.title}
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight sm:text-6xl">
+            Rent a night. Own a favorite. Keep your wallet in one place.
           </h1>
-
-          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-300">
-            <span className="flex items-center gap-1 text-yellow-400">
-              <Star size={15} fill="currentColor" /> {slide.rating}
-            </span>
-            <span>{slide.year}</span>
-            <span>•</span>
-            <span>{slide.duration}</span>
-            <span>•</span>
-            <span>{slide.genre}</span>
-          </div>
-
-          <p className="mb-6 max-w-lg text-sm leading-6 text-slate-300">
-            {slide.description}
+          <p className="mt-5 max-w-xl text-sm leading-7 text-[#cbbba4] sm:text-base">
+            ReelVerse is a two-sided movie house. Customers browse, rent with an
+            expiry, or buy forever. Authors upload titles and watch them go live
+            in the catalog.
           </p>
-
-          {/* Buttons */}
-
-          <div className="flex flex-wrap gap-4">
-            <button className="flex cursor-pointer items-center gap-2 rounded-md bg-red-600 px-5 py-3 text-sm font-semibold transition hover:bg-red-700">
-              <Play size={15} fill="currentColor" /> Watch Now
-            </button>
-
-            <button className="cursor-pointer rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm backdrop-blur-md transition hover:bg-white/20">
-              More Info
-            </button>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/movies"
+              className="inline-flex items-center gap-2 rounded-md bg-[#d4a24c] px-5 py-3 text-sm font-semibold text-[#08070b] transition hover:bg-[#d4a24c]"
+            >
+              <Play size={15} fill="currentColor" /> Browse catalog
+            </Link>
+            {!isAuthenticated ? (
+              <Link
+                href="/register"
+                className="inline-flex items-center gap-2 rounded-md border border-[#2a241c] bg-white/5 px-5 py-3 text-sm hover:bg-white/10"
+              >
+                <Ticket size={15} /> Create account
+              </Link>
+            ) : studio ? (
+              <Link
+                href="/studio"
+                className="inline-flex items-center gap-2 rounded-md border border-[#2a241c] bg-white/5 px-5 py-3 text-sm hover:bg-white/10"
+              >
+                Open studio
+              </Link>
+            ) : (
+              <Link
+                href="/library"
+                className="inline-flex items-center gap-2 rounded-md border border-[#2a241c] bg-white/5 px-5 py-3 text-sm hover:bg-white/10"
+              >
+                My library
+              </Link>
+            )}
           </div>
-
-          <div
-            className="mt-8 flex items-center gap-2"
-            aria-label="Featured movie slides"
-          >
-            {slides.map((item, index) => (
-              <button
-                key={item.title}
-                type="button"
-                aria-label={`Show ${item.title}`}
-                aria-current={index === activeSlide}
-                onClick={() => setActiveSlide(index)}
-                className={`h-1.5 cursor-pointer rounded-full transition-all ${index === activeSlide ? "w-8 bg-red-500" : "w-2 bg-slate-500"}`}
-              />
-            ))}
-          </div>
-
-          {/* Stats */}
         </motion.div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            {
+              label: "Timed rentals",
+              copy: "1, 3 or 7 days. Access ends at expiry.",
+            },
+            {
+              label: "Permanent buys",
+              copy: "Pay once from your wallet and keep it.",
+            },
+            {
+              label: "Customer wallet",
+              copy: "Fund, rent, buy, and track every debit.",
+            },
+            {
+              label: "Author studio",
+              copy: "Upload a title with rental and purchase prices.",
+            },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="rounded-2xl border border-[#2a241c] bg-[#141118]/80 p-5"
+            >
+              <p className="text-sm font-semibold text-[#d4a24c]">
+                {item.label}
+              </p>
+              <p className="mt-2 text-sm text-[#cbbba4]">{item.copy}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
